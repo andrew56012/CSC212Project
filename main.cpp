@@ -27,24 +27,52 @@ int main(){
     KMP KMP(base);
 
     //have to only perform this once to ensure number of runs for efficiency is correct
-    int kIndex = KMP.findIndex(find);
+    std::vector<int> kIndex = KMP.findIndex(find);
 
-    //program returns -1 if function could not be found else state index where pattern was found and efficiency.
-    if(kIndex != -1) {
-        std::cout << "Using the Knuth-Morris-Pratt algorithm the index this pattern appears is " << kIndex<< ".\n";
-        std::cout << "This program ran a total of " << KMP.get_efficiency() << " times to find this.\n";
-    }
-    else{
+    //Check if the vector of found indexes is empty or not
+    if(kIndex.empty() == 1) {
         std::cout << "The given pattern could not be found within the base string.\n";
         return 0;
     }
+    else if(kIndex.size() == 1){
+        std::cout << "Using the Knuth-Morris-Pratt algorithm it is found that the pattern appears at index" << kIndex[0]<< ".\n";
+        std::cout << "This program ran a total of " << KMP.get_efficiency() << " times to find this.\n";
+    }
+    else{
+        std::cout << "Using the Knuth-Morris-Pratt algorithm it is found that the pattern appears at indexes ";
+        //print all indexes where the pattern was found
+        for(int i = 0; i < kIndex.size(); i++){
+            std::cout << kIndex[i];
+            if(i == kIndex.size()-1){
+                std::cout << ".\n";
+            }
+            else{
+                std::cout << " ";
+            }
+        }
+        std::cout << "This program ran a total of " << KMP.get_efficiency() << " times to find this.\n";
+    }
 
     //have to only perform this once to ensure number of runs for efficiency is correct
-    int bmIndex = BM.findIndex(find);
+    std::vector<int> bmIndex = BM.findIndex(find);
 
-    //program returns -1 if function could not be found else state index where pattern was found and efficiency.
-    if(bmIndex != -1) {
-        std::cout << "Using the Boyer-Moore algorithm the index this pattern appears is " << bmIndex<< ".\n";
+    //state indexes found
+    if(bmIndex.size() == 1){
+        std::cout << "Using the Boyer-Moore algorithm it is found that the pattern appears at index" << bmIndex[0]<< ".\n";
+        std::cout << "This program ran a total of " << BM.get_efficiency() << " times to find this.\n";
+    }
+    else{
+        std::cout << "Using the Boyer-Moore algorithm it is found that the pattern appears at indexes ";
+        //print all indexes where the pattern was found
+        for(int i = 0; i < bmIndex.size(); i++){
+            std::cout << bmIndex[i];
+            if(i == bmIndex.size()-1){
+                std::cout << ".\n";
+            }
+            else{
+                std::cout << " ";
+            }
+        }
         std::cout << "This program ran a total of " << BM.get_efficiency() << " times to find this.\n";
     }
 

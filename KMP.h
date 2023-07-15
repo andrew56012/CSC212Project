@@ -13,12 +13,12 @@ private:
 
 public:
     //constructor
-    KMP(std::string base);
+    KMP(std::string given);
     //deconstructor
     ~KMP();
 
     //Used to look for pattern in base through indexes
-    int findIndex(std::string find);
+    std::vector<int> findIndex(std::string find);
     //helper function to find where to skip indexes too after a break in the pattern is found
     int skipTo(std::string pattern);
     //returns amount of time it took to find the index by tracking runs
