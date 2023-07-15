@@ -7,7 +7,7 @@ boyerMoore::~boyerMoore(){
 
 }
 
-int boyerMoore::findIndex(std::string find){
+std::vector<int> boyerMoore::findIndex(std::string find){
 
 }
 int boyerMoore::compare(std::string pattern){
