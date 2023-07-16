@@ -11,8 +11,8 @@ int main(){
     std::cout << "Please input your base string to find a pattern within.\n";
     std::getline(std::cin,base);
 
-    std::cout << "Please input the pattern you would like to search for within this string\n";
-    std::getline(std::cin,base);
+    std::cout << "Please input the pattern you would like to search for within this string.\n";
+    std::getline(std::cin,find);
 
     //make sure strings can be tested
     if(find.length() > base.length()){
@@ -35,8 +35,9 @@ int main(){
         return 0;
     }
     else if(kIndex.size() == 1){
-        std::cout << "Using the Knuth-Morris-Pratt algorithm it is found that the pattern appears at index" << kIndex[0]<< ".\n";
-        std::cout << "This program ran a total of " << KMP.get_efficiency() << " times to find this.\n";
+        std::cout << "Using the Knuth-Morris-Pratt algorithm it is found that the pattern appears at index " << kIndex[0]<< ".\n";
+        std::cout << "This program looped a total of " << KMP.fi_efficiency() + KMP.spt_efficiency() << " times to find this.\n";
+        std::cout << KMP.spt_efficiency() << " of these loops occurred while creating the Suffix Prefix Table while the other " << KMP.fi_efficiency() << " loops occurred while finding the indexes in which the pattern appears\n";
     }
     else{
         std::cout << "Using the Knuth-Morris-Pratt algorithm it is found that the pattern appears at indexes ";
@@ -50,7 +51,8 @@ int main(){
                 std::cout << " ";
             }
         }
-        std::cout << "This program ran a total of " << KMP.get_efficiency() << " times to find this.\n";
+        std::cout << "This program ran a total of " << KMP.fi_efficiency() + KMP.spt_efficiency() << " times to find this.\n";
+        std::cout << KMP.spt_efficiency() << " of these loops occurred while creating the Suffix Prefix Table while the other " << KMP.fi_efficiency() << " loops occurred while finding the indexes in which the pattern appears\n";
     }
 
     //have to only perform this once to ensure number of runs for efficiency is correct
@@ -58,7 +60,7 @@ int main(){
 
     //state indexes found
     if(bmIndex.size() == 1){
-        std::cout << "Using the Boyer-Moore algorithm it is found that the pattern appears at index" << bmIndex[0]<< ".\n";
+        std::cout << "Using the Boyer-Moore algorithm it is found that the pattern appears at index " << bmIndex[0]<< ".\n";
         std::cout << "This program ran a total of " << BM.get_efficiency() << " times to find this.\n";
     }
     else{
