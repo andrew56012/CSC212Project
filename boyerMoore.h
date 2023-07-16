@@ -12,6 +12,7 @@ private:
     int Index;
 
 
+
 public:
     //constructor
     boyerMoore(std::string base);
