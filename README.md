@@ -10,7 +10,7 @@
 With the help of the robust and effective text search tool String Search 2, users can locate instances of a specific search string inside a given text or group of texts. It is suited for a variety of applications because it is made to be quick, easy to use, and adaptable.
 </p>
 
-<h3> Algorithm KMP (Knuth-Morris-Pratt)
+<h3><b>Algorithm KMP (Knuth-Morris-Pratt)</b> 
 </h3>
 <p>
 Name of Function: KMP <br>
@@ -22,7 +22,7 @@ Return Type: Integer Vector <br>
 What it does: The Knuth-Morris-Pratt string search technique is carried out mostly by the KMP function. The search string and the target text are inputted, and the algorithm outputs a vector of numbers that represents the starting indexes of all instances of the search string in the target text.
 </p>
 
-<h3> KMP Helper
+<h3> <b>KMP Helper</b>
 </h3>
 <p>
 Name of Function: KMP Helper<br>
@@ -34,7 +34,7 @@ Return Type: Integer (Index)<br>
 What it does: After a failed check, the KMP algorithm uses the KMP Helper function to establish the index from which to begin looking for matches. The effectiveness of the KMP algorithm is increased by this enhancement.
 </p>
 
-<h3> Return KMP Efficiency
+<h3> <b>Return KMP Efficiency</b>
 </h3>
 <p>
 Function Name: Return KMP Efficiency <br>
@@ -44,7 +44,7 @@ Return Type: Integer <br>
 What it does: The Return KMP Efficiency function calculates the KMP algorithm's efficiency by returning the number of loops or computation time.
 </p>
 
-<h3> Boyer-Moore Algorithm
+<h3> <b>Boyer-Moore Algorithm</b>
 </h3>
 <p>
 Function Name: Boyer-Moore <br>
@@ -56,7 +56,7 @@ Return Type: Integer Vector<br>
 What it does: The Boyer-Moore function serves as the foundation for the Boyer-Moore string search algorithm. The search string and the target text are inputted, and the algorithm outputs a vector of numbers that represents the starting indexes of all instances of the search string in the target text.
 </p>
 
-<h3>BMCompare
+<h3> <b>BMCompare</b>
 </h3>
 <p>
 Function Name: BMCompare <br>
@@ -68,7 +68,7 @@ Return Type: Integer<br>
 What it does: After a failed check, the Boyer-Moore algorithm uses the BMCompare function to determine the index from which to start looking for matches. The Boyer-Moore algorithm is made more effective by this enhancement.
 </p>
 
-<h3>Return BM Efficiency
+<h3> <b>Return BM Efficiency</b>
 </h3>
 <p>
 Function Name: Return BM Efficiency <br>
