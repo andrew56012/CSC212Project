@@ -1,6 +1,7 @@
 #include <vector>
 #include <string>
 #include <utility>
+#include <chrono>
 
 
 class KMP{
@@ -10,6 +11,7 @@ private:
     int fiRuns = 0;
     int sptRuns = 0;
     int* SPTable;
+    std::chrono::duration<double> runTime;
 
 public:
     //constructor
@@ -27,5 +29,7 @@ public:
     int fi_efficiency();
     //returns amount of times it took to make SP Table
     int spt_efficiency();
+    //return runtimr
+    double get_runTime();
 
 };

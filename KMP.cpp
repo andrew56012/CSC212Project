@@ -10,7 +10,6 @@ KMP::~KMP(){
 }
 
 void KMP::createSPT(std::string pattern){
-
     //Create Suffix Prefix table
     //(Keeps track of the index of the largest matching prefix suffix pair in a given pattern based on the index of the pattern at any time)
 
@@ -48,6 +47,10 @@ void KMP::createSPT(std::string pattern){
 }
 
 std::vector<int> KMP::findIndex(std::string find){
+    //Start runtimer
+    std::chrono::time_point<std::chrono::system_clock> begin,end;
+    begin = std::chrono::system_clock::now();
+
     //holds all indexes where the pattern is found
     std::vector<int> indexes;
     int curr = 0;
@@ -76,6 +79,10 @@ std::vector<int> KMP::findIndex(std::string find){
         //keep track of efficiency
         this->fiRuns++;
     }
+
+    end = std::chrono::system_clock::now();
+    this->runTime = end-begin;
+
 
     return indexes;
 
@@ -106,4 +113,7 @@ int KMP::fi_efficiency(){
 }
 int KMP::spt_efficiency(){
     return this-> sptRuns;
+}
+double KMP::get_runTime() {
+    return this->runTime.count();
 }
