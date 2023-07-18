@@ -54,6 +54,7 @@ int main(){
         }
         std::cout << "This program ran a total of " << KMP.fi_efficiency() + KMP.spt_efficiency() << " times to find this.\n";
         std::cout << KMP.spt_efficiency() << " of these loops occurred while creating the Suffix Prefix Table while the other " << KMP.fi_efficiency() << " loops occurred while finding the indexes in which the pattern appears\n";
+        std::cout << "This algorithm took " << KMP.get_runTime() << " seconds to run.\n";
     }
 
     //have to only perform this once to ensure number of runs for efficiency is correct
