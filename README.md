@@ -83,9 +83,21 @@ What it does: The Return BM Efficiency function calculates the Boyer-Moore algor
 <h2>Usage
 </h2>
 <p>
-To discover instances of the search string in the target text using the String Search 2 library, you can call the KMP function or the Boyer-Moore function with the required parameters. The Return KMP Efficiency and Return BM Efficiency functions can be used to calculate each algorithm's efficiency.<br>
+To discover instances of the search string in the target text using the String Search 2 library, you can call the KMP function or the Boyer-Moore function with the required parameters. The Return KMP Efficiency and Return BM Efficiency functions can be used to calculate each algorithm's efficiency.
+</p>
 
-To carry out quick and effective string search operations, feel free to investigate and include this library into your projects. Please don't hesitate to get in touch with the above contributors if you run into any problems or have ideas for enhancements. Happy looking!
+<h2>Compiling Instructions
+</h2>
+<p>
+To compile the code and create an executable named 'main', open your terminal or command prompt and navigate to the directory containing the source files (main.cpp, KMP.cpp, and boyerMoore.cpp). Then, use the following command: <br>
+
+g++ main.cpp KMP.cpp boyerMoore.cpp -o main <br>
+
+This command will compile the source files and link them to create the 'main' executable. To run the executable, use the following command:<br>
+
+./main<br>
+
+Feel free to investigate and include this library into your projects for quick and effective string search operations. Please don't hesitate to get in touch with the above contributors if you run into any problems or have ideas for enhancements. Happy searching!
 </p>
 
 </html>
