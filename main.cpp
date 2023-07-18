@@ -31,13 +31,14 @@ int main(){
 
     //Check if the vector of found indexes is empty or not
     if(kIndex.empty() == 1) {
-        std::cout << "The given pattern could not be found within the base string.\n";
+        std::cout << "The given pattern could not be found within the base string using the KMP algorithm.\n";
         return 0;
     }
     else if(kIndex.size() == 1){
         std::cout << "Using the Knuth-Morris-Pratt algorithm it is found that the pattern appears at index " << kIndex[0]<< ".\n";
         std::cout << "This program looped a total of " << KMP.fi_efficiency() + KMP.spt_efficiency() << " times to find this.\n";
-        std::cout << KMP.spt_efficiency() << " of these loops occurred while creating the Suffix Prefix Table while the other " << KMP.fi_efficiency() << " loops occurred while finding the indexes in which the pattern appears\n";
+        std::cout << KMP.spt_efficiency() << " of these loops occurred while creating the Suffix Prefix Table while the other " << KMP.fi_efficiency() << " loops occurred while finding the indexes in which the pattern appears.\n";
+        std::cout << "This algorithm took " << KMP.get_runTime() << " seconds to run.\n";
     }
     else{
         std::cout << "Using the Knuth-Morris-Pratt algorithm it is found that the pattern appears at indexes ";
@@ -53,6 +54,7 @@ int main(){
         }
         std::cout << "This program ran a total of " << KMP.fi_efficiency() + KMP.spt_efficiency() << " times to find this.\n";
         std::cout << KMP.spt_efficiency() << " of these loops occurred while creating the Suffix Prefix Table while the other " << KMP.fi_efficiency() << " loops occurred while finding the indexes in which the pattern appears\n";
+        std::cout << "This algorithm took " << KMP.get_runTime() << " seconds to run.\n";
     }
 
     //have to only perform this once to ensure number of runs for efficiency is correct
