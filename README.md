@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html>
- <h1> CSC212 DSA Project by Andrew Ou, Andrew Langille, Sean Reth, Tanya Li </h1>
+ <h1> CSC212 Project by Andrew Ou, Andrew Langille, Sean Reth, Tanya Li </h1>
   
 <body>
   
