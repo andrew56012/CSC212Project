@@ -2,7 +2,6 @@
 #include <string>
 #include <utility>
 
-
 class boyerMoore{
 
 private:
@@ -10,8 +9,6 @@ private:
     std::string find;
     int Runs;
     int Index;
-
-
 
 public:
     //constructor
@@ -25,6 +22,5 @@ public:
     int compare(std::string pattern);
     //returns amount of time it took to find the index by tracking runs
     int get_efficiency();
-
 
 };
