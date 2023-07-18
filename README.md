@@ -34,6 +34,18 @@ Return Type: Integer (Index)<br>
 What it does: After a failed check, the KMP algorithm uses the KMP Helper function to establish the index from which to begin looking for matches. The effectiveness of the KMP algorithm is increased by this enhancement.
 </p>
 
+<h3> creatSPTable
+</h3>
+<p>
+Name of Function: creatSPT<br>
+
+One string is provided: the pattern for which the SPTable needs to be created.<br>
+
+Return Type: Integer Vector<br>
+
+What it does: The createSPTable function generates the SPTable, which is used by the KMP Helper function to help in finding the index to continue from after a break.
+</p>
+
 <h3> <b>Return KMP Efficiency</b>
 </h3>
 <p>
