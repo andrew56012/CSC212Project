@@ -66,7 +66,7 @@ Return Type: Integer <br>
 What it does: The Return SPT function returns the amount of loops it took to create the SPTable.
 </p>
 
-<h3> <b>get runTime</b>
+<h3> <b>Get Run time</b>
 </h3>
 <p>
 Function Name: get_runTime <br>
