@@ -10,7 +10,7 @@ private:
     std::string base;
     int fiRuns = 0;
     int sptRuns = 0;
-    int* SPTable;
+    int* SPTable = new int;
     std::chrono::duration<double> runTime;
 
 public:
