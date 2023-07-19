@@ -43,17 +43,37 @@ One string is provided: the pattern for which the SPTable needs to be created.<b
 
 Return Type: Integer Vector<br>
 
-What it does: The createSPTable function generates the SPTable, which is used by the KMP Helper function to help in finding the index to continue from after a break.
+What it does: The createSPTable function generates the SPTable which stores the longest suffixes and prefixes at any point which can then be used by the KMP Helper to skip checking some indexes.
 </p>
 
-<h3> <b>Return KMP Efficiency</b>
+<h3> <b>Return FI Efficiency</b>
 </h3>
 <p>
-Function Name: Return KMP Efficiency <br>
+Function Name: Return Find Index Efficiency <br>
 
 Return Type: Integer <br>
 
 What it does: The Return KMP Efficiency function calculates the KMP algorithm's efficiency by returning the number of loops or computation time.
+</p>
+
+<h3> <b>Return SPT Efficiency</b>
+</h3>
+<p>
+Function Name: Return SPT Efficiency <br>
+
+Return Type: Integer <br>
+
+What it does: The Return SPT function returns the amount of loops it took to create the SPTable.
+</p>
+
+<h3> <b>get runTime</b>
+</h3>
+<p>
+Function Name: get_runTime <br>
+
+Return Type: Integer <br>
+
+What it does: Returns the amount of time it took for the find index function to compltely run.
 </p>
 
 <h3> <b>Boyer-Moore Algorithm</b>
