@@ -7,14 +7,15 @@ KMP::KMP(std::string given){
 }
 KMP::~KMP(){
 
+    delete[] this->SPTable;
+
 }
 
 void KMP::createSPT(std::string pattern){
     //Create Suffix Prefix table
     //(Keeps track of the index of the largest matching prefix suffix pair in a given pattern based on the index of the pattern at any time)
 
-    int arr[pattern.size()];
-    this->SPTable = &arr[0];
+    this->SPTable = new int[pattern.size()];
 
     //Create iterators to use in table creation
     int i = 0;
