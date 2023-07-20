@@ -33,6 +33,17 @@ void weakersuffix(int *shift, int *bpos, char *pattern, int alength){
 	}
 }
 
+
+void BadCharacterHeur(int badchar[256]) {
+    for (int i = 0; i < 256; i++) {
+       BadCharacterHeur[i] = ;
+    	}
+    for (int i = 0; i < ; i++) {
+        BadCharacterHeur
+   	 }
+
+}
+
 void GoodSuffixHeur(pat, PatLength, BadCharacter){
 
 }
