@@ -27,7 +27,7 @@ int main(){
     std::cout << "Would you like to compute this string search using a brute force string search for reference. Y/N\n";
     std::cin >> RSS;
 
-    while(RSS != 'Y' || RSS != 'N'){
+    while(RSS != 'Y' && RSS != 'N'){
         std::cout << "An incorrect response has been entered. Please reply with either Y or N\n";
         std::cin >> RSS;
     }
@@ -100,8 +100,8 @@ int main(){
     if(RSS == 'Y'){
 
         regularSS BFM;
-        std::vector<int> bruteForce = BFM.search;
-        std::cout << "For comparison a string search using the brute force method would find these indexes in " << BFM.get_loops() << "and took " << BFM.get_runTime() << " seconds to run.\n";
+        std::vector<int> bruteForce = BFM.search(base,find);
+        std::cout << "For comparison a string search using the brute force method would find these indexes in " << BFM.getLoopCount() << " loops and took " << BFM.getExecutionTime() << " seconds to run.\n";
 
 
     }
