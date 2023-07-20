@@ -1,12 +1,19 @@
 #include "regularSS.h"
+#include <ctime>
 
-std::vector<int> StringSearch::search(const std::string& text, const std::string& pattern) {
-    std::vector<int> index;
+regularSS::regularSS() : loopCount(0) {}
+
+std::vector<int> regularSS::search(const std::string& text, const std::string& pattern) {
+    // Reset variables before starting the search
+    index.clear();
+    loopCount = 0;
 
     if (pattern.empty()) {
         // Pattern is empty, return an empty result
         return index;
     }
+
+    startTime = clock();
 
     int textL = text.length();
     int patternL = pattern.length();
@@ -14,6 +21,7 @@ std::vector<int> StringSearch::search(const std::string& text, const std::string
     for (int i = 0; i <= textL - patternL; ++i) {
         int j;
         for (j = 0; j < patternL; ++j) {
+            loopCount++; // Increment loop counter
             if (text[i + j] != pattern[j]) {
                 break;
             }
@@ -25,4 +33,12 @@ std::vector<int> StringSearch::search(const std::string& text, const std::string
     }
 
     return index;
+}
+
+clock_t regularSS::getTime() const {
+    return clock() - startTime;
+}
+
+int regularSS::getLoopCount() const {
+    return loopCount;
 }
