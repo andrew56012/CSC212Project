@@ -33,6 +33,14 @@ void weakersuffix(int *shift, int *bpos, char *pattern, int alength){
 	}
 }
 
+void GoodSuffixHeur(pat, PatLength, BadCharacter){
+
+}
+
+void BadCharacterHeur(pat, PatLength, BadCharacter){
+
+}
+
 std::vector<int> boyerMoore::findIndex(std::string find){
     int PatLength = pat.size();
     int TxtLength = txt.size();
