@@ -35,7 +35,7 @@ std::vector<int> regularSS::search(const std::string& text, const std::string& p
     return index;
 }
 
-clock_t regularSS::getTime() const {
+clock_t regularSS::getExecutionTime() const {
     return clock() - startTime;
 }
 
