@@ -22,5 +22,8 @@ public:
     int compare(std::string pattern);
     //returns amount of time it took to find the index by tracking runs
     int get_efficiency();
-
+    //
+    void GoodSuffixHeur(pat, PatLength, BadCharacter);
+    //
+    void BadCharacterHeur(pat, PatLength, BadCharacter);
 };
