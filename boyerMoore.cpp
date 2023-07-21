@@ -44,18 +44,26 @@ void BadCharacterHeur(int badchar[256]) {
 
 }
 
-void BadCharacterHeur(std::string str, std::string pat){
+std::vector<int> boyerMoore::BadCharacterHeur(std::string str, std::string pat){
+    //Start runtimer
+    std::chrono::time_point<std::chrono::system_clock> begin,end;
+    begin = std::chrono::system_clock::now();
+
     int strSize=str.size();
     int patSize=pat.size();
 
     int BadCharacter[256];
-
+    std::vector<int> indexes;
+    
     for (int i=0; i<strSize;i++){
         BadCharacter[i]=-1;
+        this->BadCharRuns++;
     }
 
     for (int i=0; i<patSize;i++){
         BadCharacter[pat[i]]=i;
+        this->BadCharRuns++;
+
     }
 
     for (int i=0; i<=(strSize-patSize);){
@@ -66,7 +74,7 @@ void BadCharacterHeur(std::string str, std::string pat){
         }
 
         if (j<0){
-            std::cout<<"Pattern at: "<<i<<std::endl;
+            indexes.push_back(i);
             if (i+patSize<strSize){
                 i=i+patSize-BadCharacter[str[i+patSize]];
             }
@@ -82,7 +90,12 @@ void BadCharacterHeur(std::string str, std::string pat){
                 i=i+(j-BadCharacter[str[i+j]]);
             }
         }
+        this->BadCharRuns++;
+
     }
+    end = std::chrono::system_clock::now();
+    this->runTime = end-begin;
+    return indexes;
 }
 
 std::vector<int> boyerMoore::findIndex(std::string find){
