@@ -44,12 +44,45 @@ void BadCharacterHeur(int badchar[256]) {
 
 }
 
-void GoodSuffixHeur(pat, PatLength, BadCharacter){
+void BadCharacterHeur(std::string str, std::string pat){
+    int strSize=str.size();
+    int patSize=pat.size();
 
-}
+    int BadCharacter[256];
 
-void BadCharacterHeur(pat, PatLength, BadCharacter){
+    for (int i=0; i<strSize;i++){
+        BadCharacter[i]=-1;
+    }
 
+    for (int i=0; i<patSize;i++){
+        BadCharacter[pat[i]]=i;
+    }
+
+    for (int i=0; i<=(strSize-patSize);){
+        int j=patSize-1;
+
+        while(j>=0 && pat[j]==str[i+j]){
+            j=j-1;
+        }
+
+        if (j<0){
+            std::cout<<"Pattern at: "<<i<<std::endl;
+            if (i+patSize<strSize){
+                i=i+patSize-BadCharacter[str[i+patSize]];
+            }
+            else{
+                i=i+1;
+            }
+        }
+        else{
+            if (1>j-BadCharacter[str[i+j]]){
+                i=i+1;
+            }
+            else{
+                i=i+(j-BadCharacter[str[i+j]]);
+            }
+        }
+    }
 }
 
 std::vector<int> boyerMoore::findIndex(std::string find){
