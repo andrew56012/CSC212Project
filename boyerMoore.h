@@ -3,6 +3,7 @@
 #include <utility>
 #include <chrono>
 
+
 class boyerMoore{
 
 private:
@@ -10,6 +11,8 @@ private:
     std::string find;
     int Runs;
     int Index;
+    int BadCharRuns=0;
+    std::chrono::duration<double> runTime;
 
 public:
     //constructor
@@ -23,7 +26,10 @@ public:
     int compare(std::string pattern);
     //returns amount of time it took to find the index by tracking runs
     int get_efficiency();
-    //Bad Character Heuristic approach of Boyer Moore
-    void BadCharacterHeur(std::string str, std::string pat);
-
+    //Bad character heuristic approach function
+    std::vector<int> BadCharacterHeur(std::string str, std::string pat);
+    //
+    void weakersuffix(int *shift, int *bpos, char *pattern, int alength);
+    //
+    void strongersuffix(int *shift, int *borderpos, char *pattern, int alength);
 };
