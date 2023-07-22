@@ -110,6 +110,16 @@ Return Type: integer<br>
 What it does: The Return BM Efficiency function calculates the Boyer-Moore algorithm's efficiency by reporting the number of loops or computation time.
 </p>
 
+<h3> <b>Regular Substring Search</b>
+</h3>
+<p>
+Function Name: regularSS <br>
+
+Return Type: integer<br>
+
+What it does: The class uses a naive approach for substring matching, where it checks each possible starting position in the text and compares characters one by one with the pattern. While this approach is straightforward, it may not be the most efficient for large texts or patterns. More advanced algorithms like Knuth-Morris-Pratt (KMP) or Boyer-Moore could be more suitable for larger scale and performance-critical substring searches.
+</p>
+
 </body>
 
 <h2>Usage
@@ -123,7 +133,7 @@ To discover instances of the search string in the target text using the String S
 <p>
 To compile the code and create an executable named 'main', open your terminal or command prompt and navigate to the directory containing the source files (main.cpp, KMP.cpp, and boyerMoore.cpp). Then, use the following command: <br>
 
-g++ main.cpp KMP.cpp boyerMoore.cpp -o main <br>
+g++ main.cpp KMP.cpp boyerMoore.cpp regularSS.cpp -o main <br>
 
 This command will compile the source files and link them to create the 'main' executable. To run the executable, use the following command:<br>
 
