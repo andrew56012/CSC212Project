@@ -1,17 +1,16 @@
 #include <vector>
 #include <string>
+#include <chrono>
 
 class regularSS {
-private:
-    std::vector<int> index;
-    clock_t startTime;
-    int loopCount;
-
 public:
     regularSS();
-
     std::vector<int> search(const std::string& text, const std::string& pattern);
-
-    clock_t getExecutionTime() const;
+    std::chrono::milliseconds getExecutionTime() const;
     int getLoopCount() const;
+
+private:
+    std::vector<int> index;
+    int loopCount;
+    std::chrono::time_point<std::chrono::high_resolution_clock> startTime;
 };
