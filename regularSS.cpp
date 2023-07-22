@@ -1,5 +1,4 @@
 #include "regularSS.h"
-#include <ctime>
 
 regularSS::regularSS() : loopCount(0) {}
 
@@ -13,7 +12,7 @@ std::vector<int> regularSS::search(const std::string& text, const std::string& p
         return index;
     }
 
-    startTime = clock();
+    startTime = std::chrono::high_resolution_clock::now();
 
     int textL = text.length();
     int patternL = pattern.length();
@@ -35,8 +34,9 @@ std::vector<int> regularSS::search(const std::string& text, const std::string& p
     return index;
 }
 
-clock_t regularSS::getExecutionTime() const {
-    return clock() - startTime;
+std::chrono::milliseconds regularSS::getExecutionTime() const {
+    auto endTime = std::chrono::high_resolution_clock::now();
+    return std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime);
 }
 
 int regularSS::getLoopCount() const {
