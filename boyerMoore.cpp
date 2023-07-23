@@ -106,31 +106,7 @@ std::vector<int> boyerMoore::GoodCharacterHeur(std::string text, std::string pat
     }
     GoodSuffixShiftCase1(shiftArr, bpos, pat);
     GoodSuffixShiftCase1(shiftArr, bpos, pat);
-    int shift = 1;
-    std::vector<int> region; //List of indexes where the pattern appears.
-    bool found = 0; //used to keep track if at least one match has been found.
-    while(shift <= (strSize - patSize)){
-        int patIndexes = patSize - 1;
-        while(patIndexes >= 0 && pat[patIndexes] == text[shift + patIndexes]){
-            patIndexes--;
-        }
-        if (patIndexes<0){
-            region.push_back(shift);
-            found = 1;
-            int tempBadCharacterShift = 1;
-            if (shift + patternLength < textLength){
-                tempBadCharacterShift = patSize-BadCharacter[text[shift + patSize]];
-            } 
-            shift += std::max(shiftArr[0],tempBadCharacterShift);
-        }
-        else{
-            shift += std::max(shiftArr[patIndexes+1], patIndexes-BadCharacter[text[shift+patIndexes]]);
-        }
-    }
-    std::pair<bool, std::vector<int>> returnVal;
-    returnVal.first = found;
-    returnVal.second = region;
-    return returnVal;
+
 }
 
 
