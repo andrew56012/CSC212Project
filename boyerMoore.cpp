@@ -7,42 +7,36 @@ boyerMoore::~boyerMoore(){
 
 }
 
-void strongersuffix(int *shift, int *borderpos, char *pattern, int alength){
-	int i=alength;
-	int j=alength+1;
-	borderpos[i]=j;
-	while(i>0){
-		while(j<=a && pattern[i-1] != pattern[j-1]){
-			if (shift[j]==0){
-				shift[j] = j-i;
-            		}
-		j = borderpos[j];
-		}
-	i--;
+void GoodSuffixShiftCase1(int *shift, int *bpos, char *pattern, int alength){
+    int patSize = pat.size();
+    int tempstrSize = patSize;
+    int j = patSize + 1;
+    bpos[patSize] = j; //Set borderPos[patternLength] to patternLength+1.
+    while(tempstrSize > 0) {
+        while(j <= patSize && pattern[tempstrSize - 1] != pattern[j -1 ]){
+            if (shift[j]==0){
+                shift[j] = j-tempstrSize;
+            }
+            j = bpos[j];
+        }
+        tempstrSize--;
         j--;
-	bpos[i] = j;
-	}
+        bpos[tempstrSize] = j;
+    }
 }
-void weakersuffix(int *shift, int *bpos, char *pattern, int alength){
-	int j = borderpos[0];
-	for(int i=0; i<=alength; i++){
-		if(shift[i]==0)
-		shift[i] = j;
-		if (i==j)
-		j = bpos[j];
-	}
+void GoodSuffixShiftCase2(int *shift, int *bpos, char *pattern){
+    int patSize = pat.size();
+    int bpos = bposArr[0];
+    for(int i=0; i<=patSize; i++){
+        if(shift[i]==0){
+            shift[i] = bpos;
+        }
+        if (i == bpos){
+            bpos=bposArr[bpos];
+        }
+    }
 }
 
-
-void BadCharacterHeur(int badchar[256]) {
-    for (int i = 0; i < 256; i++) {
-       BadCharacterHeur[i] = ;
-    	}
-    for (int i = 0; i < ; i++) {
-        BadCharacterHeur
-   	 }
-
-}
 
 std::vector<int> boyerMoore::BadCharacterHeur(std::string str, std::string pat){
     //Start runtimer
@@ -98,17 +92,51 @@ std::vector<int> boyerMoore::BadCharacterHeur(std::string str, std::string pat){
     return indexes;
 }
 
-std::vector<int> boyerMoore::findIndex(std::string find){
-    int PatLength = pat.size();
-    int TxtLength = txt.size();
-    int BadCharacter[256];
-    BadCharacterHeur(pat, PatLength, BadCharacter);
 
-    int Pos[PatLength + 1];
-    int shiftArr[Patlength+1];
-    for(int i=0){
+
+std::vector<int> boyerMoore::GoodCharacterHeur(std::string text, std::string pat){
+    int patSize = pat.size();
+    int strSize= str.size();
+    int badChar[256];
+    BadCharacterHeur(pat, BadCharacter);
+    int bpos[patSize + 1];
+    int shiftArr[patSize + 1];
+    for (int i = 0; i < patSize + 1; i++){
         shiftArr[i] = 0;
     }
+    GoodSuffixShiftCase1(shiftArr, bpos, pat);
+    GoodSuffixShiftCase1(shiftArr, bpos, pat);
+    int shift = 1;
+    std::vector<int> region; //List of indexes where the pattern appears.
+    bool found = 0; //used to keep track if at least one match has been found.
+    while(shift <= (strSize - patSize)){
+        int patIndexes = patSize - 1;
+        while(patIndexes >= 0 && pat[patIndexes] == text[shift + patIndexes]){
+            patIndexes--;
+        }
+        if (patIndexes<0){
+            region.push_back(shift);
+            found = 1;
+            int tempBadCharacterShift = 1;
+            if (shift + patternLength < textLength){
+                tempBadCharacterShift = patSize-BadCharacter[text[shift + patSize]];
+            } 
+            shift += std::max(shiftArr[0],tempBadCharacterShift);
+        }
+        else{
+            shift += std::max(shiftArr[patIndexes+1], patIndexes-BadCharacter[text[shift+patIndexes]]);
+        }
+    }
+    std::pair<bool, std::vector<int>> returnVal;
+    returnVal.first = found;
+    returnVal.second = region;
+    return returnVal;
+}
+
+
+
+std::vector<int> boyerMoore::findIndex(std::string find){
+
 
 }
 int boyerMoore::compare(std::string pattern){
