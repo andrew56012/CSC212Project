@@ -24,7 +24,7 @@ void GoodSuffixShiftCase1(std::string shift, std::string bpos, std::string patte
         bpos[tempstrSize] = j;
     }
 }
-void GoodSuffixShiftCase2(int *shift, int *bpos, char *pattern){
+void GoodSuffixShiftCase2(std::string shift, std::string bposArr, std::string pattern){
     int patSize = pat.size();
     int bpos = bposArr[0];
     for(int i=0; i<=patSize; i++){
