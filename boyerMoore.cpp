@@ -8,7 +8,7 @@ boyerMoore::~boyerMoore(){
 }
 
 void GoodSuffixShiftCase1(std::string shift, std::string bpos, std::string pattern){
-    int patSize = pat.size();
+    int patSize = pattern.size();
     int tempstrSize = patSize;
     int j = patSize + 1;
     bpos[patSize] = j; //Set borderPos[patternLength] to patternLength+1.
@@ -24,9 +24,9 @@ void GoodSuffixShiftCase1(std::string shift, std::string bpos, std::string patte
         bpos[tempstrSize] = j;
     }
 }
-void GoodSuffixShiftCase2(std::string shift, std::string bposArr, std::string pattern){
-    int patSize = pat.size();
-    int bpos = bposArr[0];
+void GoodSuffixShiftCase2(std::string shift, std::string bposstr, std::string pattern){
+    int patSize = pattern.size();
+    int bpos = bposstr[0];
     for(int i=0; i<=patSize; i++){
         if(shift[i]==0){
             shift[i] = bpos;
