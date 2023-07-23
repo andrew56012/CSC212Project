@@ -105,7 +105,7 @@ std::vector<int> boyerMoore::GoodCharacterHeur(std::string text, std::string pat
         shiftArr[i] = 0;
     }
     GoodSuffixShiftCase1(shiftArr, bpos, pat);
-    GoodSuffixShiftCase1(shiftArr, bpos, pat);
+    GoodSuffixShiftCase2(shiftArr, bpos, pat);
 
 }
 
