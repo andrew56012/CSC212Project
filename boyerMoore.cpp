@@ -7,7 +7,7 @@ boyerMoore::~boyerMoore(){
 
 }
 
-void GoodSuffixShiftCase1(int *shift, int *bpos, char *pattern){
+void GoodSuffixShiftCase1(std::string shift, std::string bpos, std::string pattern){
     int patSize = pat.size();
     int tempstrSize = patSize;
     int j = patSize + 1;
