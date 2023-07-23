@@ -7,7 +7,7 @@ boyerMoore::~boyerMoore(){
 
 }
 
-void GoodSuffixShiftCase1(std::string shift, std::string bpos, std::string pattern){
+void GoodSuffixShift(std::string shift, std::string bpos, std::string pattern){
     int patSize = pattern.size();
     int tempstrSize = patSize;
     int j = patSize + 1;
@@ -24,7 +24,7 @@ void GoodSuffixShiftCase1(std::string shift, std::string bpos, std::string patte
         bpos[tempstrSize] = j;
     }
 }
-void GoodSuffixShiftCase2(std::string shift, std::string bposstr, std::string pattern){
+void GoodSuffixPartial(std::string shift, std::string bposstr, std::string pattern){
     int patSize = pattern.size();
     int bpos = bposstr[0];
     for(int i=0; i<=patSize; i++){
@@ -104,8 +104,8 @@ std::vector<int> boyerMoore::GoodCharacterHeur(std::string text, std::string pat
     for (int i = 0; i < patSize + 1; i++){
         shiftArr[i] = 0;
     }
-    GoodSuffixShiftCase1(shiftArr, bpos, pat);
-    GoodSuffixShiftCase2(shiftArr, bpos, pat);
+    GoodSuffixShift(shiftArr, bpos, pat);
+    GoodSuffixPartial(shiftArr, bpos, pat);
 
 }
 
