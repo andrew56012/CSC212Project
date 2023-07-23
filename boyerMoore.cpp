@@ -32,7 +32,7 @@ void GoodSuffixShiftCase2(std::string shift, std::string bposstr, std::string pa
             shift[i] = bpos;
         }
         if (i == bpos){
-            bpos=bposArr[bpos];
+            bpos=bposstr[bpos];
         }
     }
 }
