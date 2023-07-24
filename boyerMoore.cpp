@@ -28,7 +28,7 @@ void boyerMoore::GoodSuffixShiftCase1(std::vector<int> shift, std::vector<int> b
     }
 }
 
-void boyerMoore::GoodSuffixShiftCase2(std::vector<int> shift, std::vector<int> bposArr, std::string pattern){ //function to compute weaker good suffix(no proper suffix)
+void boyerMoore::GoodSuffixShiftCase2(std::vector<int> shift, std::vector<int> bposArr, std::string pattern){ //function to compute weaker good suffix
     int patSize = pattern.size();
     int tempstrSize = patSize;
     int patSize = pattern.size();
