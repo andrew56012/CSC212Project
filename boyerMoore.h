@@ -7,29 +7,27 @@
 class boyerMoore{
 
 private:
-    std::string base;
-    std::string find;
-    int Runs;
-    int Index;
-    int BadCharRuns=0;
+    int Runs=0;
     std::chrono::duration<double> runTime;
+    std::string base;
 
 public:
     //constructor
-    boyerMoore(std::string base);
+    boyerMoore(std::string given);
     //deconstructor
     ~boyerMoore();
 
     //Used to look for pattern in base through indexes
-    std::vector<int> findIndex(std::string find);
-    //helper function to find where to skip indexes too after a break in the pattern is found
-    int compare(std::string pattern);
     //returns amount of time it took to find the index by tracking runs
     int get_efficiency();
     //Bad character heuristic approach function
-    std::vector<int> BadCharacterHeur(std::string str, std::string pat);
+    void BadCharacterHeur(int BadCharacters[],std::string pat);
     //
-    void weakersuffix(int *shift, int *bpos, char *pattern, int alength);
+    void GoodSuffixShiftCase1(std::vector<int> shift, std::vector<int> bpos, std::string pattern);
     //
-    void strongersuffix(int *shift, int *borderpos, char *pattern, int alength);
+    void GoodSuffixShiftCase2(std::vector<int> shift, std::vector<int> bposArr, std::string pattern);
+    std::vector<int> findIndex(const std::string& text, const std::string& pat);
+    int get_loops();
+    double get_runTime();
+
 };
