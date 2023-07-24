@@ -73,41 +73,49 @@ Function Name: get_runTime <br>
 
 Return Type: Integer <br>
 
-What it does: Returns the amount of time it took for the find index function to compltely run.
+What it does: Returns the amount of time it took for the find index function to completely run.
 </p>
 
-<h3> <b>Boyer-Moore Algorithm</b>
+<h3> <b>Boyer-Moore Good Suffix Heuristic</b>
 </h3>
 <p>
-Function Name: Boyer-Moore <br>
+Function Names: GoodSuffixShiftCase1 and GoodSuffixShiftCase2 <br>
   
 Two strings are provided: one to check (the target text) and the other to search for (the search string).<br>
 
-Return Type: Integer Vector<br>
+Return Type: Void<br>
 
-What it does: The Boyer-Moore function serves as the foundation for the Boyer-Moore string search algorithm. The search string and the target text are inputted, and the algorithm outputs a vector of numbers that represents the starting indexes of all instances of the search string in the target text.
+What it does: These two functions implement the good suffix heuristic of the boyer-moore algorithm. Here we go through the pattern string, and preprocessing the string to handle the strong suffix case, and prefix case.
 </p>
 
-<h3> <b>BMCompare</b>
+<h3> <b>Booyer-Moore Bad Character Heuristic</b>
 </h3>
 <p>
-Function Name: BMCompare <br>
+Function Name: BadCharacterHeur <br>
 
-Two strings are provided: one to check (the target text) and one to search for up to a predetermined break point.<br>
+Return Type: Void<br>
 
-Return Type: Integer<br>
+What it does: This function implements the bad character heuristic of the boyer-moore algorithm. It starts by taking an array of the bad characters and the pattern. The array is then filled with -1 values to show that no characters in the patter have been encountered. Then the array is filled with the rightmost indexes of each letter in pattern. With this the bad character table has been preprocessed.
+</p>
 
-What it does: After a failed check, the Boyer-Moore algorithm uses the BMCompare function to determine the index from which to start looking for matches. The Boyer-Moore algorithm is made more effective by this enhancement.
+<h3> <b>BM Pattern Search</b>
+</h3>
+<p>
+Function Name: findIndex <br>
+
+Return Type: Integer Vector<br>
+
+What it does: The findIndex function implements both the good suffix and bad character heuristics to find each time there. The bad/mismathed characters and good suffixes are preprocessed, which are then used in order to shift through the string and find the positions where the pattern matches with the string. After everything, a vector of indexes is returned, showing every time the pattern matches up with the given string.
 </p>
 
 <h3> <b>Return BM Efficiency</b>
 </h3>
 <p>
-Function Name: Return BM Efficiency <br>
+Function Name: get_Searchefficiency and get_Processefficiency <br>
 
 Return Type: integer<br>
 
-What it does: The Return BM Efficiency function calculates the Boyer-Moore algorithm's efficiency by reporting the number of loops or computation time.
+What it does: The Return BM Efficiency functions calculate the Boyer-Moore algorithm's efficiency by reporting the number of loops or computation time. The get_Searchefficiency function returns just the amount of loops used with the index searching function. The get_Processefficiency returns the numbers of loops used to preprocess the pattern going to be searched for within the string.
 </p>
 
 <h3> <b>Regular Substring Search</b>
@@ -139,7 +147,7 @@ This command will compile the source files and link them to create the 'main' ex
 
 ./main<br>
 
-Feel free to investigate and include this library into your projects for quick and effective string search operations. Please don't hesitate to get in touch with the above contributors if you run into any problems or have ideas for enhancements. Happy searching!
+From here, all of the instructions are left within the console of the code. The user will be prompted with several options asking for a pattern and string they would like to search with, followed by if they would like to search while comparing with a more simplistic approach. Feel free to investigate and include this library into your projects for quick and effective string search operations. Please don't hesitate to get in touch with the above contributors if you run into any problems or have ideas for enhancements. Happy searching!
 </p>
 
 </html>
