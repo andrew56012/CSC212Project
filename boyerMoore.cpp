@@ -1,16 +1,18 @@
 #include "boyerMoore.h"
 
-boyerMoore::boyerMoore(std::string base){
-
+boyerMoore::boyerMoore(std::string given){
+    this -> base = given;
 }
+
 boyerMoore::~boyerMoore(){
 
 }
 
-void GoodSuffixShift(std::string shift, std::string bpos, std::string pattern){
+void boyerMoore::GoodSuffixShiftCase1(std::vector<int> shift, std::vector<int> bpos, std::string pattern){
     int patSize = pattern.size();
     int tempstrSize = patSize;
     int j = patSize + 1;
+
     bpos[patSize] = j; //Set borderPos[patternLength] to patternLength+1.
     while(tempstrSize > 0) {
         while(j <= patSize && pattern[tempstrSize - 1] != pattern[j -1 ]){
@@ -22,102 +24,93 @@ void GoodSuffixShift(std::string shift, std::string bpos, std::string pattern){
         tempstrSize--;
         j--;
         bpos[tempstrSize] = j;
+        this->Runs++;
     }
 }
-void GoodSuffixPartial(std::string shift, std::string bposstr, std::string pattern){
+
+void boyerMoore::GoodSuffixShiftCase2(std::vector<int> shift, std::vector<int> bposArr, std::string pattern){
     int patSize = pattern.size();
-    int bpos = bposstr[0];
+    int bpos = bposArr[0];
     for(int i=0; i<=patSize; i++){
         if(shift[i]==0){
             shift[i] = bpos;
         }
         if (i == bpos){
-            bpos=bposstr[bpos];
+            bpos=bposArr[bpos];
         }
+        this->Runs++;
     }
 }
 
 
-std::vector<int> boyerMoore::BadCharacterHeur(std::string str, std::string pat){
-    //Start runtimer
-    std::chrono::time_point<std::chrono::system_clock> begin,end;
-    begin = std::chrono::system_clock::now();
+void boyerMoore::BadCharacterHeur(int BadCharacters[],std::string pat){
 
-    int strSize=str.size();
     int patSize=pat.size();
 
-    int BadCharacter[256];
-    std::vector<int> indexes;
-    
-    for (int i=0; i<strSize;i++){
-        BadCharacter[i]=-1;
-        this->BadCharRuns++;
+    for (int i=0; i<256;i++){
+        BadCharacters[i]=-1;
+        this->Runs++;
     }
 
     for (int i=0; i<patSize;i++){
-        BadCharacter[pat[i]]=i;
-        this->BadCharRuns++;
-
+        BadCharacters[pat[i]]=i;
+        this->Runs++;
     }
-
-    for (int i=0; i<=(strSize-patSize);){
-        int j=patSize-1;
-
-        while(j>=0 && pat[j]==str[i+j]){
-            j=j-1;
-        }
-
-        if (j<0){
-            indexes.push_back(i);
-            if (i+patSize<strSize){
-                i=i+patSize-BadCharacter[str[i+patSize]];
-            }
-            else{
-                i=i+1;
-            }
-        }
-        else{
-            if (1>j-BadCharacter[str[i+j]]){
-                i=i+1;
-            }
-            else{
-                i=i+(j-BadCharacter[str[i+j]]);
-            }
-        }
-        this->BadCharRuns++;
-
-    }
-    end = std::chrono::system_clock::now();
-    this->runTime = end-begin;
-    return indexes;
 }
 
-
-
-std::vector<int> boyerMoore::GoodCharacterHeur(std::string text, std::string pat){
+std::vector<int> boyerMoore::findIndex(const std::string& text, const std::string& pat) {
+    std::chrono::time_point<std::chrono::system_clock> begin,end;
+    begin = std::chrono::system_clock::now();
     int patSize = pat.size();
-    int strSize= str.size();
-    int badChar[256];
-    BadCharacterHeur(pat, BadCharacter);
-    int bpos[patSize + 1];
-    int shiftArr[patSize + 1];
-    for (int i = 0; i < patSize + 1; i++){
-        shiftArr[i] = 0;
+    int strSize = text.size();
+    int BadCharacters[256];
+    BadCharacterHeur(BadCharacters, pat);
+
+    std::vector<int> bpos(patSize + 1, 0);
+    std::vector<int> shiftArr(patSize + 1, 0);
+
+    GoodSuffixShiftCase1(shiftArr, bpos, pat);
+    GoodSuffixShiftCase2(shiftArr, bpos, pat);
+
+    std::vector<int> region; // List of indexes where the pattern appears.
+    bool found = false;     // Used to keep track if at least one match has been found.
+    int shift = 0;
+
+    while (shift <= (strSize - patSize)) {
+        int patIndex = patSize - 1;
+        while (patIndex >= 0 && pat[patIndex] == text[shift + patIndex]) {
+            patIndex--;
+            this->Runs++;
+        }
+        if (patIndex < 0) {
+            region.push_back(shift);
+            found = true;
+            int tempBadCharacterShift = 1;
+            if (shift + patSize < strSize) {
+                tempBadCharacterShift = patSize - BadCharacters[text[shift + patSize]];
+            }
+            shift += std::max(shiftArr[0], tempBadCharacterShift);
+        } else {
+            shift += std::max(shiftArr[patIndex + 1], patIndex - BadCharacters[text[shift + patIndex]]);
+        }
+        this->Runs++;
     }
-    GoodSuffixShift(shiftArr, bpos, pat);
-    GoodSuffixPartial(shiftArr, bpos, pat);
+
+    if (found) {
+        end = std::chrono::system_clock::now();
+        this->runTime = end-begin;
+        return region;
+    } else {
+        end = std::chrono::system_clock::now();
+        this->runTime = end-begin;
+        return {}; // Empty vector if pattern not found.
+    }
 
 }
 
-
-
-std::vector<int> boyerMoore::findIndex(std::string find){
-
-
-}
-int boyerMoore::compare(std::string pattern){
-
-}
 int boyerMoore::get_efficiency(){
     return this->Runs;
+}
+double boyerMoore::get_runTime(){
+    return this-> runTime.count();
 }
