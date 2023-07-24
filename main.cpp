@@ -77,7 +77,8 @@ int main(){
     }
     else if(bmIndex.size() == 1){
         std::cout << "Using the Boyer-Moore algorithm it is found that the pattern appears at index " << bmIndex[0]<< ".\n";
-        std::cout << "This program looped a total of " << BM.get_efficiency() << " times to find this.\n";
+        std::cout << "This program looped a total of " << BM.get_Searchefficiency()+BM.get_Processefficiency() << " times to find this.\n";
+        std::cout << BM.get_Processefficiency() << " of these loops occurred while preprocessing the pattern, while the other " << BM.get_Searchefficiency() << " loops occurred while finding the indexes in which the pattern appears\n";
         std::cout << "This algorithm took " << BM.get_runTime() << " seconds to run.\n";
     }
     else{
@@ -92,26 +93,27 @@ int main(){
                 std::cout << " ";
             }
         }
-        std::cout << "This program ran a total of " << BM.get_efficiency() << " times to find this.\n";
+        std::cout << "This program ran a total of " << BM.get_Searchefficiency()+ BM.get_Processefficiency()<< " times to find this.\n";
+        std::cout << BM.get_Processefficiency() << " of these loops occurred while preprocessing the pattern, while the other " << BM.get_Searchefficiency() << " loops occurred while finding the indexes in which the pattern appears\n";
         std::cout << "This algorithm took " << BM.get_runTime() << " seconds to run.\n";
     }
     std::cout << "\n";
 
+    //if users would also like to see a brute force method of the string search:
     if(RSS == 'Y'){
 
         regularSS BFM;
         std::cout << "Using the Brute Force method, it is found that the pattern appears at indexes ";
 
+        //create vector of returned indexes from regularSS class.
         std::vector<int> bruteForce = BFM.search(base,find);
+        //loop through vector to print each index.
         for (int i=0;i<bruteForce.size();i++){
             std::cout<<bruteForce[i]<<" ";
         }
         std::cout<<std::endl;
         std::cout << "For comparison a string search using the brute force method would find these indexes in " << BFM.getLoopCount() << " loops and took " << BFM.getExecutionTime() << " seconds to run.\n";
 
-
     }
-
     return 0;
-
 }
