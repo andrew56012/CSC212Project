@@ -22,9 +22,9 @@ public:
     int get_efficiency();
     //Bad character heuristic approach function
     void BadCharacterHeur(int BadCharacters[],std::string pat);
-    //
+    //Stronger Good character heuristic approach function
     void GoodSuffixShiftCase1(std::vector<int> shift, std::vector<int> bpos, std::string pattern);
-    //
+    //Weaker Good character heuristic approach function
     void GoodSuffixShiftCase2(std::vector<int> shift, std::vector<int> bposArr, std::string pattern);
     std::vector<int> findIndex(const std::string& text, const std::string& pat);
     int get_loops();
