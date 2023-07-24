@@ -3,6 +3,9 @@
 regularSS::regularSS() : loopCount(0) {}
 
 std::vector<int> regularSS::search(const std::string& text, const std::string& pattern) {
+    //Start runtimer
+    std::chrono::time_point<std::chrono::system_clock> begin,end;
+    begin = std::chrono::system_clock::now();
     // Reset variables before starting the search
     index.clear();
     loopCount = 0;
@@ -11,8 +14,6 @@ std::vector<int> regularSS::search(const std::string& text, const std::string& p
         // Pattern is empty, return an empty result
         return index;
     }
-
-    startTime = std::chrono::high_resolution_clock::now();
 
     int textL = text.length();
     int patternL = pattern.length();
@@ -30,13 +31,16 @@ std::vector<int> regularSS::search(const std::string& text, const std::string& p
             index.push_back(i);
         }
     }
+    end = std::chrono::system_clock::now();
+    this->startTime = end-begin;
 
     return index;
 }
 
-std::chrono::milliseconds regularSS::getExecutionTime() const {
-    auto endTime = std::chrono::high_resolution_clock::now();
-    return std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime);
+double regularSS::getExecutionTime() const {
+
+    return this->startTime.count();
+
 }
 
 int regularSS::getLoopCount() const {
