@@ -33,12 +33,12 @@ void KMP::createSPT(std::string pattern){
             i++;
             j++;
         }
-        //If the letter did not match and the i is checking from the first index make j equal to 0 to say that it has no match
+            //If the letter did not match and the i is checking from the first index make j equal to 0 to say that it has no match
         else if(i == 0){
             *(this->SPTable+j) = 0;
             j++;
         }
-        //If the letter did not match and the i is not equal to 0 then set i equal to the index that is held in the table before the current i and run again.
+            //If the letter did not match and the i is not equal to 0 then set i equal to the index that is held in the table before the current i and run again.
         else{
             i = *(this->SPTable+i-1);
         }
@@ -66,8 +66,7 @@ std::vector<int> KMP::findIndex(std::string find){
         //if the pattern has been successfully found add the index i to the found patterns list
         if(curr == find.size()){
             indexes.push_back(start);
-            start++;
-            curr = 0;
+            start += skipTo(curr,start);
         }
 
         //check if patterns match. If not activate helper function to see where to start search from next
